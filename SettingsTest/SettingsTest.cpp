@@ -6,28 +6,20 @@
 
 #include "SettingsTest.h"
 
-void SettingsTest::SettingsTest(){
-	mySettings = new Settings("SettingsTest","SettingsTest\test");
+SettingsTest::SettingsTest(){
+	mySettings = new Settings("SettingsTest","SettingsTest");
 	
 	mySettings->Add(new StringValueSetting("MyStringSetting", "StringValue",
 		"server address expected"));
-	mySettings->Add(new BooleanValueSetting("BooleanSetting", true,"BoolanTest");
+	mySettings->Add(new BooleanValueSetting("BooleanSetting", true));
+	mySettings->TryReadingSettings();
+	mySettings->SaveSettings();
 
-	fCaptureRateSetting = new EnumeratedStringValueSetting("CaptureRate",
-		kCaptureRates[3].name, &CaptureRateAt,
-		B_TRANSLATE("capture rate expected"),
-		"unrecognized capture rate specified");
-
-	fUploadClientSetting = new EnumeratedStringValueSetting("EnumeratedValud",
-		kStringList[1], &kStringList,
-		"Stringlist expected",
-		"Nicht erkannt");
-	fSettings->TryReadingSettings();
 }
 
 
 int main() {
-	SettingsTest app;
+	SettingsTest app=SettingsTest();
 	return 0;
 }
 
